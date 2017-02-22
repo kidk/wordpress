@@ -41,6 +41,8 @@ RUN set -ex; \
 	chown -R www-data:www-data /usr/src/wordpress
 
 COPY docker-entrypoint.sh /usr/local/bin/
+COPY 000-default.conf /etc/apache2/sites-enabled/000-default.conf
+COPY status-page.conf /etc/apache2/conf-enabled/status-page.conf
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
